@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <div id="app">
+            <ul>
+                <div v-for="fruit in fruits" :key="fruit">
+                    <p>{{fruit}}</p>
+                    <input type="text">
+                </div>
+            </ul>
+            <button v-on:click="remove">先端を削除</button>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    fruits: ['りんご', 'バナナ', 'ぶどう'],
+                },
+                methods: {
+                    remove: function() {
+                        this.fruits.shift()
+                    }
+                }
+            })
+        //v-forの問題点、要素の移動を最小限に抑えるアルゴリズムを使用し可能な限りその場で同じタイプの要素を再利用すること。
+        //key属性を設定しないと削除した時に、効率的なレンダリングをしようとするので<input>が変わらない。
+        //v-forを使用する際にはkey属性を必ず使用する。そうでないと予期せぬバグが起こる。
+        //key属性は<template>では使えない。
+        //key="index"は使えない。
+        </script>
+    </body>
+</html>

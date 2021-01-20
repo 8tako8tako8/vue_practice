@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <div id="app">
+            <button v-on:click="ok = !ok">ボタン</button>
+            <p v-if="ok">if</p>
+            <p v-show="ok">show</p>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    ok: false
+                }
+            })
+        //v-ifとv-showの違い。上のプログラムで検証を見ると、初期状態だとv-ifの<p>は存在しないのに、v-showは<p>がdistplay:noneになる。
+        //ボタンを押すとv-ifが現れる。v-showは<template>に使えない。(display:noneにする物が無い)
+        //v-showのデメリットは初期描画が遅い。(true/falseに関係なくDOMに表示するから)
+        //v-ifのデメリットは<p>を削除することが重い。頻繁に切り替わるものにはv-showを使った方が良い。
+        </script>
+    </body>
+</html>

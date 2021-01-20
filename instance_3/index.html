@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <div id="app">
+            <p>{{message}}</p>
+        </div>
+        <script>
+            let vm1 = new Vue({
+                el: '#app',
+                data: {
+                    name: 'モリモト'
+                },
+                render: function(createElement) {
+                    console.log(createElement('h1', 'こんにちは' + this.name));
+                    return createElement('h1', 'こんにちは' + this.name);
+                }
+            })
+            let dir = document.createElement('div');
+            console.log(dir);
+            console.log(document);
+            console.dir(document);
+        //今回はrenderを使って表示させる。
+        //createElementは単に h と書かれる事がある。
+        //DOM:Document Object Model、ブラウザが持つdocumentというオブジェクトがHTMLを読み取る事で作成される。
+        //今回はDOMではなく仮想DOMを作るために(vnode/仮想node)をreturnしている。つまりjavascriptのオブジェクトを返しているだけ。
+        //仮想DOMとは、DOM要素を模したjavascript用のオブジェクト。ブラウザのDOMに直接アクセスして書き換えるなどするのは遅い。
+        //変更前のDOM(前回の仮想DOM)と変更後のDOM(新しい仮想DOM)の差分だけを反映させることで効率的になる。
+        </script>
+    </body>
+</html>

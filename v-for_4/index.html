@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+        <div id="app">
+            <ul>
+                <li v-for="(fruit, index) in fruits">({{index}}){{fruit}}</li>
+            </ul>
+            <ul>
+                <li v-for="(value, key, index) in object">({{index}}){{key}}-{{value}}</li>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    fruits: ['りんご', 'バナナ', 'ぶどう'],
+                    object: {
+                        firstName: '太郎',
+                        lastName: '田中',
+                        age: 21
+                    }
+                }
+            })
+        //objectは第一引数value,第二引数key,第三引数indexの順になる。名前は何でもいい。
+        </script>
+    </body>
+</html>
