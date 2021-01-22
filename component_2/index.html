@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <div id="app">
+            <my-component></my-component>
+            <my-component></my-component>
+            <my-component></my-component>
+        </div>
+        <div id="app2">
+            <my-component></my-component>
+            <my-component></my-component>
+            <my-component></my-component>
+        </div>
+        <script>
+            Vue.component('my-component', {
+                data: function() {
+                    return {
+                        number:12
+                    }
+                },
+                template: '<p>いいね({{number}})<button v-on:click="increment">+1</button></p>',
+                methods: {
+                    increment: function() {
+                        this.number += 1;
+                    }
+                }
+            })
+            new Vue({
+                el: '#app',
+            })
+            new Vue({
+                el: '#app2',
+            })
+        //コンポーネントのdataは関数でないといけない。
+        //オブジェクトだとそれぞれのコンポーネントで一つを参照する形になるためvuejsでは関数としてreturnさせる仕様。
+        //これにより別々のメモリに値が保存される。
+        //上ではコンポーネントのグローバル登録であるため、app,app2どちらでも使える。
+        </script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+VueCLIのメリット
+・ファイルの分割
+・HMR(HotModuleReplacement)で、リロードなしでブラウザに反映される。
+
+VueCLIの中身
+・babel.config.js
+javascriptの古いバージョンにトランスファイルするもの。(ブラウザによって対応していない場合があるため)
+・package.json
+説明書
+
+・src/assets
+基本的にCSSファイルやimageファイルを置くところ
+
+・public/index.html
+メインのhtmlでここにvueが一つの塊として読み込まれる
+
+・main.js
+一番大元のファイルで、ここからvueコンポーネントなどに繋がっていく。
+Vue.config.productionTip = falseがtrueならお助けtipsをコンソールしてくれる。
+render: h => h(App)はコンポーネントのオブジェクトAppを突っ込んで返している。
+書き直すと、
+render: function(h) {
+    return h(App)
+}
+
+・App.vue
+シングル(単一)ファイルコンポーネント、template,script,styleで構成される。
+最終的にコンポーネントのオブジェクトとしてexportされる
+それをmain.jsでimportしている。
+
+・vue-router
+シンブルページアプリケーション(SPA)は、一つのページで表示される。
+URLの#以下はidを示す。つまりURLは変わらず同じindex.htmlを表示させる。
+vue-routerがidで、どのようなコンポーネントを表示させるかを決める。
+mode: 'history'　で#消える
+
